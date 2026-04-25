@@ -986,7 +986,7 @@ class TestBatch10(PdfArrangerTest):
 
     def test_02_disable_encryption(self):
         """Test export with encryption disabled"""
-        self._app().button("Encryption").click()
+        self._app().child(roleName="button", name="Encryption").click()
         self._mainmenu("Save As…")
         self._save_as_chooser("unencrypted.pdf", ["unencrypted.pdf"])
         with pikepdf.open(os.path.join(self.__class__.tmp, "unencrypted.pdf")):
@@ -995,7 +995,7 @@ class TestBatch10(PdfArrangerTest):
 
     def test_03_enable_encryption(self):
         """Test export with a password set manually"""
-        self._app().button("Encryption").click()
+        self._app().child(roleName="button", name="Encryption").click()
         dialog = self._app().child(roleName="dialog")
         passfield = dialog.child(roleName="password text")
         passfield.text = "foobar"
